@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Fernández</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font: 1rem 'Cambria', sans-serif;
+            color: tomato;
+        }
+
+        h1 {
+            font-family: 'Bernard MT';
+            font-size: 3rem;
+            color: #2fa559;
+        }
+
+        h2, h3 {
+            font-family: cambria, sans-serif;
+        }
+
+        p {
+            font-family: calibri, sans-serif;
+        }
+        #perro {
+            width: 530px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+        #caja {
+            width: 300px;
+            height: 200px;
+            background-color: #1d18a4;
+            border: 1px solid #33d57c;
+            padding: 10px;
+            margin: 0 auto;
+        }
+        .fila {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+        .columna {
+            width: 400px;
+            height: 400px;
+            background: lavender;
+            padding: 20px;
+        }
+        .columna form {
+            width: 100%;
+            text-align: center;
+        }
+        .columna label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .columna input,
+        .columna textarea {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin: 0 auto 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .columna2 {
+            width: 400px;
+            height: 400px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mateo Fernández Blasco</h1>
+    <h2>Viernes, 18 de septiembre de 2026</h2>
+    <h3>En Rivas Vaciamadrid</h3>
+    <a href="https://www.udit.es" target="_blank">Sitio web de UDIT</a>
+    <br>
+    <a href = "https://es.wikipedia.org/wiki/Roma" target="_blank">Wikipedia sobre Roma</a>
+</p>
+    <div class="fila">
+       <div class="columna">
+        <form action="http://www.cursos-diseño.es/mostrar.php" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for = "Comentario">Comentario:</label>
+            <textarea id="comentario" name="comentario"></textarea>
+            <input type="submit" value="Enviar">
+        </form>
+       </div>
+       <div class = "columna2">
+                <img src="perro salchica6.jpg.webp" alt="Foto de perro reguapo" id="perro" width="850" height="500" object-fit="cover">
+
+    </form>
+    </div>
+</body>
+</html>
+
+// cuando hay varios elementos, se usa "class" y cuando hay uno solo, se usa "id".
+# Padding: es el espacio entre el contenido y el borde del elemento.
