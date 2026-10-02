@@ -3,25 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
+
         body {
             background: #efefef;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: "Cambria", sans-serif;
         }
+
         table {
             width: 100%;
             max-width: 400px;
             margin: auto;
         }
+        td:nth-child(1) {
+            text-align: 1px;
+            
+        }
+
         .pequenio { width: 60px; }
         .mediano { width: 200px; }
         .grande { width: 100%; }
-        textarea {resize: none;} /* Si hay muchas cosas alrededor, mejor desactivar*/
+
+        textarea {
+            resize: none;
+        }
+
+        input, textarea, select, option {
+            font-size: 1rem;
+            font-family: "Segoe UI", sans-serif;
+            padding: 3px 8px;
+        }
+
+        input, textarea, select {
+            border: 1px solid grey;
+            border-radius: 4px;
+        }
+
+        :required {
+            border: 2px solid red;
+        }
+
+        :focus {
+            background-color: lavender;
+        }
+
+        input[type="file"] {
+            border: none;
+        }
+
+        input[type="submit"] { /* Botón de envío */
+            border: none;
+            background-color: forestgreen;
+        }
+        input [type = 'submit']:hover {
+            background-color: #29a629;
+            box-shadow: 0px 3px 4px grey;
+        }
     </style>
 </head>
 <body>
@@ -40,14 +82,13 @@
         <hr>
 
         <h2>Tipos de inputs y propiedades</h2>
-        <form action="http://www.cursos-diseño.es/mostrar.php" method="post">
-
-            <br>
-
+        <form action="http://www.cursos-diseño.es/mostrar.php"
+              method="post"
+              enctype="multipart/form-data">
             <table>
                 <tr>
-                    <td>Apellidos</td>
-                    <td><input type="text" name="apellidos"></td>
+                    <td>Apellidos*</td>
+                    <td><input type="text" name="apellidos" class="grande" required autofocus></td>
                 </tr>
                 <tr>
                     <td>Código Postal</td>
@@ -55,7 +96,7 @@
                 </tr>
                 <tr>
                     <td>Teléfono</td>
-                    <td><input type="text" name="telefono" placeholder="+34 123 456 789" maxlength="9" minlength="9"></td>
+                    <td><input type="tel" name="telefono" placeholder="+34 123 456 789"></td>
                 </tr>
                 <tr>
                     <td>Ciudad</td>
@@ -71,8 +112,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Email</td>
-                    <td><input type="email" name = "email" placeholder= "example@example.com"></td>
+                    <td>Email*</td>
+                    <td>
+                        <input type="email" name="email" class="mediano"
+                               placeholder="example@example.com"
+                               autocomplete="off" required>
+                    </td>
                 </tr>
                 <tr>
                     <td>Comentarios</td>
@@ -80,62 +125,132 @@
                 </tr>
                 <tr>
                     <td>Edad</td>
-                    <td><input type="number" name = "edad" class = "pequenio" value = "25" min = "18" max = "65"></td>
+                    <td><input type="number" name="edad" class="pequenio" value="25" min="18" max="65"></td>
                 </tr>
                 <tr>
                     <td>Latas</td>
-                    <td><input type="number" name = "latas" min = "6" value = "12" class = "pequenio">
+                    <td><input type="number" name="latas" min="6" value="12" class="pequenio"></td>
                 </tr>
                 <tr>
                     <td>Ingredientes</td>
                     <td>
-                        <label>
-                        <input type = "checkbox" name = "tomate" value="si">
-                        Tomate </label> <br>
-                        <label>
-                        <input type = "checkbox" name = "tomate" value="si">
-                        Alcaparras </label> <br>
-                        <label>
-                        <input type = "checkbox" name = "tomate" value="si">
-                        Anchoas </label> <br>
-                        <label>
-                        <input type = "checkbox" name = "tomate" value="si">
-                        Extra Queso </label>
+                        <label><input type="checkbox" name="ingredientes[]" value="tomate"> Tomate</label><br>
+                        <label><input type="checkbox" name="ingredientes[]" value="alcaparras"> Alcaparras</label><br>
+                        <label><input type="checkbox" name="ingredientes[]" value="anchoas"> Anchoas</label><br>
+                        <label><input type="checkbox" name="ingredientes[]" value="extra-queso"> Extra queso</label>
                     </td>
                 </tr>
                 <tr>
                     <td>Horario</td>
-                    <td><input type="radio" name = "horario" value = "maniana">Mañana</td> </tr>
-                    <input type="radio" name = "horario" value = "tarde">Tarde
-                    <input type="radio" name = "horario" value = "noche">Noche
-                    <input type="radio" name = "horario" value = "indiferente" checked>Indiferente
+                    <td>
+                        <label><input type="radio" name="horario" value="maniana"> Mañana</label><br>
+                        <label><input type="radio" name="horario" value="tarde"> Tarde</label><br>
+                        <label><input type="radio" name="horario" value="noche"> Noche</label><br>
+                        <label><input type="radio" name="horario" value="indiferente" checked> Indiferente</label>
+                    </td>
                 </tr>
                 <tr>
                     <td>Habitación</td>
-                    <td><select name="habitacion">
-                        <option value="i1">Individual</option>
-                        <option value="d2">Doble 2 camas</option>
-                        <option value="d1">Doble 1 cama</option>
-                        <option value="t3">Triple 3 camas</option>
-                        <option value="t2"> Triple matrimonio + individual</option>
-                    </select></td>
+                    <td>
+                        <select name="habitacion">
+                            <option value="i1">Individual</option>
+                            <option value="d2" selected>Doble 2 camas</option>
+                            <option value="d1">Doble 1 cama</option>
+                            <option value="t3">Triple 3 camas</option>
+                            <option value="t2">Triple matrimonio + individual</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Provincia</td>
+                    <td>
+                        <select name="provincia" required>
+                            <option value="" selected disabled>Elige una provincia</option>
+                            <option value="15">A Coruña</option>
+                            <option value="01">Álava</option>
+                            <option value="02">Albacete</option>
+                            <option value="03">Alicante</option>
+                            <option value="04">Almería</option>
+                            <option value="33">Asturias</option>
+                            <option value="05">Ávila</option>
+                            <option value="06">Badajoz</option>
+                            <option value="07">Islas Baleares</option>
+                            <option value="08">Barcelona</option>
+                            <option value="09">Burgos</option>
+                            <option value="10">Cáceres</option>
+                            <option value="11">Cádiz</option>
+                            <option value="39">Cantabria</option>
+                            <option value="12">Castellón</option>
+                            <option value="13">Ciudad Real</option>
+                            <option value="14">Córdoba</option>
+                            <option value="16">Cuenca</option>
+                            <option value="17">Girona</option>
+                            <option value="18">Granada</option>
+                            <option value="19">Guadalajara</option>
+                            <option value="20">Guipúzcoa</option>
+                            <option value="21">Huelva</option>
+                            <option value="22">Huesca</option>
+                            <option value="23">Jaén</option>
+                            <option value="26">La Rioja</option>
+                            <option value="35">Las Palmas</option>
+                            <option value="24">León</option>
+                            <option value="25">Lleida</option>
+                            <option value="27">Lugo</option>
+                            <option value="28">Madrid</option>
+                            <option value="29">Málaga</option>
+                            <option value="30">Murcia</option>
+                            <option value="31">Navarra</option>
+                            <option value="32">Ourense</option>
+                            <option value="34">Palencia</option>
+                            <option value="36">Pontevedra</option>
+                            <option value="37">Salamanca</option>
+                            <option value="38">Santa Cruz de Tenerife</option>
+                            <option value="40">Segovia</option>
+                            <option value="41">Sevilla</option>
+                            <option value="42">Soria</option>
+                            <option value="43">Tarragona</option>
+                            <option value="44">Teruel</option>
+                            <option value="45">Toledo</option>
+                            <option value="46">Valencia</option>
+                            <option value="47">Valladolid</option>
+                            <option value="48">Vizcaya</option>
+                            <option value="49">Zamora</option>
+                            <option value="50">Zaragoza</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Foto</td>
+                    <td><input type="file" name="foto" accept="image/*"></td>
+                </tr>
+                <tr>
+                    <td>Fecha</td>
+                    <td>
+                        <input type="date" name="fecha" value="2026-12-30"
+                               min="2026-11-11" max="2027-01-20" step="7">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hora</td>
+                    <td>
+                        <input type="time" name="hora" min="12:15" max="17:45"
+                               value="15:30" step="900">
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="acepto" value="si" required>
+                            Acepto los términos y condiciones
+                        </label>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Comprobar"></td>
                 </tr>
             </table>
-
-            <br>
-
         </form>
     </article>
 </body>

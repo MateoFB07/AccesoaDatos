@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Responsive</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        input,
+        textarea,
+        select,
+        option {
+            font-family: 'Segoe-UI', sans-serif;
+            font-size: 1rem;
+            padding: 3px 8px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background: #f5f5f5;
+            padding: 30px;
+            border: solid#eee 1px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .desayuno {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .desayuno input {
+            width: auto;
+            margin: 0;
+        }
+
+        .habitacion {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .habitacion select,
+        .habitacion .desayuno {
+            margin-bottom: 15px;
+        }
+
+        input[type='submit'] {
+            width: auto;
+            border: none;
+            background-color: forestgreen;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 6px 15px;
+
+        }
+        input [type = "checkbox"] {
+            width: auto;
+        }
+
+        input[type='submit']:hover {
+            background-color: rgb(74, 216, 74);
+            box-shadow: 0 3px 4px rgba(195, 194, 194, 0.932);
+        }
+
+        #boton {
+            text-align: right;
+        }
+        .fila {
+            display: flex;
+            gap: 30px;
+            align-items: end;
+        }
+        .columna1 {
+            width: 60%;
+        }
+        .columna2 {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Formulario Responsive</h1>
+    </header>
+
+    <article>
+        <form action="http://www.cursos-diseño.es/mostrar.php" method="post">
+            Nombre
+            <input type="text" name="Nombre">
+            <div class="fila">
+                <div class="columna">
+                    Email
+                    <input type="email" name="email">
+                </div>
+                <div class="columna2">
+                    Teléfono
+                    <input type="text" name="telefono">
+                </div>
+            </div>
+            Tipo de Habitación
+            <div class="habitacion">
+                <select name="" id="">
+                    <option value="i1">Individual</option>
+                    <option value="d2" selected>Doble 2 camas</option>
+                    <option value="d1">Doble matrimonio</option>
+                    <option value="t3">Triple 3 camas</option>
+                    <option value="t2">Triple matrimonio + individual</option>
+                </select>
+                <label class="desayuno">
+                    <input type="checkbox" name="desayuno" value="si">
+                    Desayuno incluido
+                </label>
+            </div>
+            Comentario
+            <textarea name="comentario" rows="5"></textarea>
+            <div id="boton"><input type="submit"></div>
+        </form>
+    </article>
+
+</body>
+
+</html>

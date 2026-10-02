@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Nuevo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        form {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            background: #f5f5f5;
+            border: 1px solid #eee;
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 16px 0;
+        }
+
+        tr {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        tr.tres {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        tr.acciones {
+            align-items: center;
+        }
+
+        td {
+            min-width: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        td > label {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        td > input:not([type="radio"]),
+        td > select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 3px 8px;
+            font: inherit;
+        }
+
+        fieldset {
+            margin: 0 0 15px;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            border: none;
+            background-color: forestgreen;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 6px 15px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(74, 216, 74);
+            box-shadow: 0 3px 4px rgba(195, 194, 194, 0.932);
+        }
+
+        #boton {
+            text-align: right;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+            }
+
+            tr,
+            tr.tres {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Formulario Nuevo</h1>
+
+    </header>
+
+    <form>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre">
+                    </td>
+                    <td>
+                <label for="apellido">Apellidos:</label>
+                <input type="text" name="apellido" id="apellido">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                <label for="calle">Calle:</label>
+                <input type="text" name="calle" id="calle">
+                    </td>
+                    <td>
+                <label for="numero">Número:</label>
+                <input type="number" name="numero" id="numero" min="1" step="1">
+                    </td>
+                </tr>
+                <tr class="tres">
+                    <td>
+                <label for="codigo_postal">Código Postal:</label>
+                <input type="text" name="codigo_postal" id="codigo_postal">
+                    </td>
+                    <td>
+                <label for="poblacion">Población:</label>
+                <input type="text" name="poblacion" id="poblacion">
+                    </td>
+                    <td>
+                <label for="provincia">Provincia:</label>
+                <select name="provincia" id="provincia" required>
+                    <option value="" selected disabled>Elige una provincia</option>
+                    <option value="15">A Coruña</option>
+                    <option value="01">Álava</option>
+                    <option value="02">Albacete</option>
+                    <option value="03">Alicante</option>
+                    <option value="04">Almería</option>
+                    <option value="33">Asturias</option>
+                    <option value="05">Ávila</option>
+                    <option value="06">Badajoz</option>
+                    <option value="07">Islas Baleares</option>
+                    <option value="08">Barcelona</option>
+                    <option value="09">Burgos</option>
+                    <option value="10">Cáceres</option>
+                    <option value="11">Cádiz</option>
+                    <option value="39">Cantabria</option>
+                    <option value="12">Castellón</option>
+                    <option value="13">Ciudad Real</option>
+                    <option value="14">Córdoba</option>
+                    <option value="16">Cuenca</option>
+                    <option value="17">Girona</option>
+                    <option value="18">Granada</option>
+                    <option value="19">Guadalajara</option>
+                    <option value="20">Guipúzcoa</option>
+                    <option value="21">Huelva</option>
+                    <option value="22">Huesca</option>
+                    <option value="23">Jaén</option>
+                    <option value="26">La Rioja</option>
+                    <option value="35">Las Palmas</option>
+                    <option value="24">León</option>
+                    <option value="25">Lleida</option>
+                    <option value="27">Lugo</option>
+                    <option value="28">Madrid</option>
+                    <option value="29">Málaga</option>
+                    <option value="30">Murcia</option>
+                    <option value="31">Navarra</option>
+                    <option value="32">Ourense</option>
+                    <option value="34">Palencia</option>
+                    <option value="36">Pontevedra</option>
+                    <option value="37">Salamanca</option>
+                    <option value="38">Santa Cruz de Tenerife</option>
+                    <option value="40">Segovia</option>
+                    <option value="41">Sevilla</option>
+                    <option value="42">Soria</option>
+                    <option value="43">Tarragona</option>
+                    <option value="44">Teruel</option>
+                    <option value="45">Toledo</option>
+                    <option value="46">Valencia</option>
+                    <option value="47">Valladolid</option>
+                    <option value="48">Vizcaya</option>
+                    <option value="49">Zamora</option>
+                    <option value="50">Zaragoza</option>
+                </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                <label for="email">Email*</label>
+                <input type="email" name="email" id="email" class="mediano"
+                       placeholder="example@example.com"
+                       autocomplete="off" required>
+                    </td>
+                    <td>
+                <label for="telefono">Teléfono</label>
+                <input type="text" name="telefono" id="telefono" class="mediano">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Inglés</strong>
+                <label><input type="radio" name="idioma" value="basico"> Básico</label>
+                <label><input type="radio" name="idioma" value="intermedio"> Intermedio</label>
+                <label><input type="radio" name="idioma" value="avanzado"> Avanzado</label>
+                    </td>
+                    <td>
+                        <strong>Disponibilidad</strong>
+                <label><input type="radio" name="disponibilidad" value="basico"> Básico</label>
+                <label><input type="radio" name="disponibilidad" value="intermedio"> Intermedio</label>
+                <label><input type="radio" name="disponibilidad" value="avanzado"> Avanzado</label>
+                    </td>
+                </tr>
+                <tr class="acciones">
+                    <td>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="acepto" value="si" required>
+                            <strong>Acepto <a href="terminos-y-condiciones.html">los términos y condiciones</a></strong>
+                        </label>
+                    </td>
+                    <td>
+                        <div id="boton"><input type="submit" value="Enviar"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
