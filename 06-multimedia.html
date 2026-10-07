@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia</title>
+    <style>
+        img {
+            width: 500px;
+            aspect-ratio: 16/9;
+            object-fit: cover;  
+        }
+        #avatar {
+            width: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 6px grey;
+        }
+        #primero {
+            text-align: right;
+        }
+        #segundo {
+            text-align: center;
+        }
+        #tercero {
+            background: url('pruebas/madrid3.jpg') center / cover no-repeat;
+            width: 300px;
+            height: 300px;
+        }
+        h3 {
+            font-size: 4rem;
+            text-align: center;
+            color: white;
+            text-shadow: 0 3px 6px grey;
+        }
+        
+        video {
+            width: 60%;
+        }
+
+        .derecha {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .izquierda {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .centro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/10;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Multimedia</h1>
+
+
+    <h2>Vídeo</h2>
+
+    <video src="pruebas/pelicula.mp4" controls width="640">
+
+    </video>
+
+    <h2>Audio</h2>
+    <div class = "centro">
+
+    <audio src="pruebas/sonido.mp3" controls>
+    
+    </audio>
+
+    <h2>Foto</h2>
+
+    <img src="pruebas/calma.jpg" id = "primero">
+    <img src="pruebas/barra.png" id = "segundo">
+    <img src="pruebas/peras.jpg" id = "avatar">
+    <div>
+
+        <section id = "tercero">
+            <h3> Pl. 2 de mayo</h3>
+        </section>
+    </div>
+
+    <h2>Vídeos</h2>
+    <div class = "derecha">
+
+    <iframe src="/pruebas/ficha.pdf" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.0284859636863!2d-3.631931172190568!3d40.44001250375282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422ed8ee5b256d%3A0xf355c34f2b6fe355!2sUDIT%20Formaci%C3%B3n%20Profesional%20Superior!5e1!3m2!1ses!2ses!4v1791390161067!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div style=><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/paul_kemp_robertson_bitcoin_sweat_tide_meet_the_future_of_branded_currency" title="Bitcoin. Sweat. Tide. Meet the future of branded currency." style="position:absolute;left:0;top:0;width:100%;height:100%"  frameborder="0" scrolling="no" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen webkitallowfullscreen mozallowfullscreen onload="window.parent.postMessage('iframeLoaded', 'https://embed.ted.com')"></iframe></div></div>
+
+</html>
