@@ -17,27 +17,29 @@
         }
 
         h1 {
-            width: 1000px;
-            max-width: 100%;
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto 24px;
+            padding: 20px;
             text-align: center;
+            background-color: aquamarine;
         }
 
         #fcontenedor {
             display: flex;
             flex-direction: row;
             align-items: flex-start;
-            justify-content: space-between;
+            justify-content: center;
             gap: 24px;
         }
 
         #izquierda {
-            width: 765px
+            width: 765px;
         }
 
         #derecha {
-            flex: 0 0 205px;
             width: 205px;
+            margin: 0;
         }
 
         .pequenio { width: 60px; }
@@ -119,12 +121,7 @@
             margin-top: 18px;
             gap: 4px;
         }
-
-        .busqueda input[type="text"] {
-            flex: 1;
-            min-width: 0;
-        }
-
+       
         @media (max-width: 760px) {
             #fcontenedor {
                 flex-direction: column;
@@ -147,11 +144,15 @@
 <body>
     <h1>Ejemplo de maquetación</h1>
     <h2>Formulario</h2>
+    
 
     <div id="fcontenedor">
         
         <div id="izquierda">
-            <form class="formulario">
+            <form class="formulario"
+                  action="http://www.cursos-diseño.es/mostrar.php"
+                  method="post"
+                  enctype="multipart/form-data">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quas, aut numquam alias reiciendis provident illo veniam illum adipisci aspernatur!</p>
         <table>
             <tbody>
