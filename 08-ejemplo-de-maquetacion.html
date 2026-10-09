@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de maquetación</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            width: 1000px;
+            max-width: 100%;
+            margin: 0 auto 24px;
+            text-align: center;
+        }
+
+        #fcontenedor {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        #izquierda {
+            width: 765px
+        }
+
+        #derecha {
+            flex: 0 0 205px;
+            width: 205px;
+        }
+
+        .pequenio { width: 60px; }
+        .mediano { width: 200px; }
+        .grande { width: 100%; }
+
+        .formulario {
+            flex: 1;
+            min-width: 0;
+            width: 100%;
+            margin: 0;
+            padding: 30px;
+            background: #e4cbe7;
+            border: 1px solid #eeede7;
+        }
+
+        .formulario table {
+            width: 100%;
+            border-spacing: 16px 0;
+        }
+
+        .formulario tr {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .formulario tr.acciones {
+            align-items: center;
+        }
+
+        .formulario td {
+            min-width: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .formulario td > label {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .formulario td > input:not([type="radio"]) {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 3px 8px;
+            font: inherit;
+        }
+
+        .formulario input[type="submit"] {
+            width: auto;
+            border: none;
+            background-color: rgb(45, 21, 131);
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 6px 15px;
+        }
+
+        .formulario input[type="submit"]:hover {
+            background-color: rgb(74, 216, 74);
+            box-shadow: 0 3px 4px rgba(195, 194, 194, 0.932);
+        }
+
+        #boton {
+            text-align: right;
+        }
+
+        #derecha img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: auto;
+        }
+
+        .busqueda {
+            display: flex;
+            width: 100%;
+            margin-top: 18px;
+            gap: 4px;
+        }
+
+        .busqueda input[type="text"] {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 760px) {
+            #fcontenedor {
+                flex-direction: column;
+            }
+
+            #izquierda,
+            #derecha {
+                width: 100%;
+                max-width: 100%;
+                flex-basis: auto;
+            }
+
+            #derecha img {
+                max-width: 205px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Ejemplo de maquetación</h1>
+    <h2>Formulario</h2>
+
+    <div id="fcontenedor">
+        
+        <div id="izquierda">
+            <form class="formulario">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quas, aut numquam alias reiciendis provident illo veniam illum adipisci aspernatur!</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre">
+                    </td>
+                    <td>
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" class = grande id="apellido">
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td>
+                <label for="email">Email*</label>
+                <input type="email" name="email" id="email" class="mediano"
+                       placeholder="example@example.com"
+                       autocomplete="off" required>
+                    </td>
+                    <td>
+                <label for="telefono">Teléfono</label>
+                <input type="tel" name="telefono" id="telefono" size="9">
+                    </td>
+                </tr>
+    
+                <tr class="acciones">
+                    <td>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="acepto" value="si" required>
+                            <strong>Acepto <a href="terminos-y-condiciones.html">los términos y condiciones</a></strong>
+                        </label>
+                    </td>
+                    <td>
+                        <div id="boton"><input type="submit" value="Enviar"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            </form>
+        </div>
+        <div id="derecha">
+            <img src="pruebas/anuncio.gif" alt="Anuncio">
+            <form class="busqueda" action="https://www.google.com/search" method="get">
+                <input type="text" name="q" aria-label="Buscar">
+                <input type="image" src="buscar.png" alt="Buscar" width="30" height="30">
+                <input type="hidden" name="udm" value="2">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

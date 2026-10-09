@@ -1,35 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Galería de Madrid</title>
+
     <style>
-        .galeria {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+        /* Hace que todos los elementos incluyan el padding y border dentro de su tamaño */
+        * {
+            box-sizing: border-box;
         }
+
+        /* Estilo general del cuerpo de la página */
+        body {
+            margin: 0; /* elimina el margen por defecto del navegador */
+            background: #fafafa; /* fondo claro */
+            font-family: Arial, sans-serif; /* fuente sencilla */
+            padding: 30px; /* espacio alrededor del contenido */
+        }
+
+        /* Estilo del título "Galería" */
+        h2 {
+            text-align: center; /* centra el texto */
+            margin-bottom: 30px; /* separa el título de la galería */
+            color: #222; /* color oscuro del texto */
+        }
+
+        /* Contenedor principal de la galería */
+        .galeria {
+            display: flex; /* convierte el contenedor en un flexbox */
+            flex-wrap: wrap; /* si no cabe, pasa a otra línea */
+            justify-content: center; /* centra las imágenes horizontalmente */
+            gap: 30px; /* separa las imágenes entre sí */
+        }
+
+        /* Estilo para cada imagen de la galería */
         .galeria img {
-            width: 300px;
-            height: 300px;
-            border: 10px solid;
-            box-shadow: 0 4px 6px black;
-            object-fit: cover;
+            width: 300px; /* ancho fijo */
+            height: 300px; /* alto fijo */
+            object-fit: cover; /* recorta la imagen para llenar el espacio sin deformarla */
+            border: 10px solid #fff; /* marco blanco alrededor */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra suave */
+            transition: transform 0.3s ease, transform 0.3s ease; /* animación al cambiar */
+        }
+
+        /* Efecto cuando el cursor pasa por encima de una imagen */
+        .galeria img:hover {
+            transform: scale(1.15) rotate(15deg); /* aumenta tamaño un 15% y gira 15 grados */
         }
     </style>
 </head>
 <body>
+    <!-- Título principal de la página -->
     <h2>Galería</h2>
+
+    <!-- Contenedor con todas las imágenes -->
     <div class="galeria">
-        <img src="pruebas/madrid1.jpg" id = "primera">
-        <img src="pruebas/madrid2.jpg" id = "segunda">
-        <img src="pruebas/madrid3.jpg" id = "tercera">
-        <img src="pruebas/madrid4.jpg" id = "cuarta">
-        <img src="pruebas/madrid5.jpg" id = "quinta">
-        <img src="pruebas/madrid6.jpg" id = "sexta">
-   
-    
+        <img src="pruebas/madrid1.jpg" id="primera" alt="Madrid 1">
+        <img src="pruebas/madrid2.jpg" id="segunda" alt="Madrid 2">
+        <img src="pruebas/madrid3.jpg" id="tercera" alt="Madrid 3">
+        <img src="pruebas/madrid4.jpg" id="cuarta" alt="Madrid 4">
+        <img src="pruebas/madrid5.jpg" id="quinta" alt="Madrid 5">
+        <img src="pruebas/madrid6.jpg" id="sexta" alt="Madrid 6">
+    </div>
 </body>
 </html>
-
