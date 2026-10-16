@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Gestión - Acceso a Datos</title>
     <style>
+        /* Hace que el ancho y el alto incluyan el padding y los bordes. */
         * {
             box-sizing: border-box;
         }
 
+        /* Define la tipografía, el fondo y el espacio exterior de la página. */
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f9f9f9;
             padding: 20px;
         }
 
-        /* 1. Título superior centrado */
+        /* Centra y limita el ancho del bloque que contiene el título. */
         .header-titulo {
             width: 100%;
             max-width: 850px;
@@ -26,13 +28,13 @@
             text-align: center;
         }
 
+        /* Ajusta el tamaño y el color del encabezado principal. */
         .header-titulo h1 {
-            margin: 0;
             font-size: 1.5rem;
             color: #333;
         }
 
-        /* 2. Barra horizontal superior */
+        /* Da formato a la barra superior y distribuye sus elementos en horizontal. */
         .barra-superior {
             width: 100%;
             max-width: 850px;
@@ -45,7 +47,7 @@
             align-items: center;
         }
 
-        /* Formulario principal */
+        /* Centra el formulario, limita su ancho y define su fondo y espaciado. */
         form {
             width: 100%;
             max-width: 850px;
@@ -55,15 +57,36 @@
             border: 1px solid #eee;
         }
 
-        table {
-            width: 100%;
-            border-spacing: 12px;
+        /* Organiza el formulario en una columna principal y otra secundaria. */
+        .contenido-formulario {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 12px;
+            align-items: start;
         }
 
+        /* Hace que la tabla ocupe todo el ancho y separa sus columnas. */
+        table {
+            width: 100%;
+            border-spacing: 12px 0;
+        }
+
+        /* Coloca las celdas de cada fila en una cuadrícula con separación. */
+        tr {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+
+        /* Permite que las celdas se ajusten al espacio disponible. */
         td {
+            min-width: 0;
+            padding: 0;
             vertical-align: top;
         }
 
+        /* Presenta las etiquetas como bloques legibles sobre los campos. */
         td > label {
             display: block;
             margin-bottom: 4px;
@@ -71,22 +94,33 @@
             font-size: 0.9rem;
         }
 
-        td > input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+        /* Da el mismo ancho y un formato uniforme a campos, listas y áreas de texto. */
+        td > input:not([type="checkbox"]),
         td > select,
         td > textarea {
             width: 100%;
             margin-bottom: 10px;
             padding: 5px 8px;
-            font: inherit;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
 
-        /* Estilo para el contenedor de la imagen (Derecha) */
+        /* Alinea a la derecha el contenido de la fila de acciones. */
+        tr.acciones td {
+            text-align: right;
+        }
+
+        /* Da formato a la etiqueta asociada a la columna de imagen. */
+        .columna-imagen > label {
+            margin-bottom: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Crea un recuadro flexible y centrado para mostrar la imagen. */
         .contenedor-imagen {
             border: 2px dashed #bbb;
             background: #fff;
-            height: 260px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -96,14 +130,15 @@
             margin-bottom: 10px;
         }
 
+        /* Limita el tamaño de la imagen y conserva sus proporciones dentro del recuadro. */
         .contenedor-imagen img {
-            max-width: 100%;
-            max-height: 200px;
-            object-fit: contain;
-            display: none;
+           max-width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+        display: block;
         }
 
-        /* Botón de envío */
+        /* Da formato común al botón de envío y a los botones normales. */
         input[type="submit"], button {
             border: none;
             background-color: forestgreen;
@@ -111,33 +146,15 @@
             font-weight: bold;
             font-size: 1rem;
             padding: 8px 18px;
-            cursor: pointer;
             border-radius: 3px;
         }
 
+        /* Cambia el color y añade una sombra al pasar el puntero por los botones. */
         input[type="submit"]:hover, button:hover {
             background-color: rgb(74, 216, 74);
             box-shadow: 0 3px 4px rgba(195, 194, 194, 0.932);
         }
 
-        .btn-secundario {
-            background-color: #6c757d;
-        }
-
-        .btn-secundario:hover {
-            background-color: #5a6268;
-        }
-
-        #boton {
-            text-align: right;
-        }
-
-        @media (max-width: 700px) {
-            table, tr, td {
-                display: block;
-                width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -147,141 +164,59 @@
         <h1>Módulo de Acceso a Datos - Registro</h1>
     </div>
 
-    <!-- 2. Barra horizontal superior (Boceto Pizarra) -->
-    <div class="barra-superior">
-        <strong>Estado de Persistencia: LocalStorage / JSON</strong>
-        <button type="button" class="btn-secundario" onclick="exportarJSON()">Exportar a JSON</button>
-    </div>
-
     <!-- 3. Formulario principal -->
-    <form id="miFormulario">
-        <table>
-            <tbody>
-                <!-- Fila 1: Código / Nombre y la Imagen a la derecha -->
-                <tr>
-                    <td style="width: 35%;">
-                        <label for="codigo">Código / ID:</label>
-                        <input type="text" name="codigo" id="codigo" required placeholder="Ej: REG-001">
-                    </td>
-                    <td style="width: 35%;">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" required placeholder="Nombre">
-                    </td>
-                    <!-- Columna de la Imagen que abarca varias filas -->
-                    <td rowspan="5" style="width: 30%;">
-                        <label>Fotografía / Imagen:</label>
-                        <div class="contenedor-imagen">
-                            <span id="textoImagen">Sin imagen seleccionada</span>
-                            <img id="vistaPrevia" src="#" alt="Previsualización">
-                        </div>
-                        <input type="file" id="inputImagen" accept="image/*" onchange="mostrarImagen(event)">
-                    </td>
-                </tr>
-
-                <!-- Fila 2: Categoria y Precio -->
-                <tr>
-                    <td>
-                        <label for="categoria">Categoría:</label>
-                        <select name="categoria" id="categoria">
-                            <option value="General">General</option>
-                            <option value="Equipamiento">Equipamiento</option>
-                            <option value="Servicios">Servicios</option>
-                        </select>
-                    </td>
-                    <td>
-                        <label for="precio">Precio (€):</label>
-                        <input type="number" name="precio" id="precio" min="0" step="0.01" placeholder="0.00">
-                    </td>
-                </tr>
-
-                <!-- Fila 3: Observaciones / Detalles -->
-                <tr>
-                    <td colspan="2">
-                        <label for="observaciones">Observaciones:</label>
-                        <input type="text" name="observaciones" id="observaciones" placeholder="Detalles o descripción...">
-                    </td>
-                </tr>
-
-                <!-- Fila 4: Opciones de Checkbox -->
-                <tr>
-                    <td colspan="2">
-                        <label style="display: inline-flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" name="activo" id="activo" checked>
-                            <span>Registro activo en la base de datos</span>
+    <form id="miFormulario" action="http://www.cursos-diseño.es/mostrar.php" method="post" enctype="multipart/form-data">
+        <div class="contenido-formulario">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="codigo">Código / ID:</label>
+                            <input type="text" name="codigo" id="codigo" required placeholder="Ej: REG-001">
+                        </td>
+                        <td>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" name="nombre" id="nombre" required placeholder="Nombre">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="categoria">Categoría:</label>
+                            <select name="categoria" id="categoria">
+                                <option value="General">General</option>
+                                <option value="Equipamiento">Equipamiento</option>
+                                <option value="Servicios">Servicios</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label for="precio">Precio (€):</label>
+                            <input type="number" name="precio" id="precio" min="0" step="0.01" placeholder="0.00">
+                        </td>
+                    </tr>
+                    <tr class="fila-completa">
+                        <td>
+                            <label for="observaciones">Observaciones:</label>
+                            <input type="text" name="observaciones" id="observaciones" placeholder="Detalles o descripción...">
+                        </td>
+                    </tr>
+                    <tr class="fila-completa">
+                        <td>
+                            <label>
+                            <input type="checkbox" name="acepto" value="si" required>
+                            <strong>Acepto <a href="terminos-y-condiciones.html">los términos y condiciones</a></strong>
                         </label>
-                    </td>
-                </tr>
-
-                <!-- Fila 5: Botón de envío -->
-                <tr>
-                    <td colspan="2">
-                        <div id="boton">
+                        </td>
+                    </tr>
+                    <tr class="acciones">
+                        <td>
                             <input type="submit" value="Guardar Registro">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="contenedor-imagen">
+             <img src="pruebas/madrid6.jpg" alt="Foto de Madrid">
+            </div>
     </form>
-
-    <!-- Código JavaScript sencillo para simular el Acceso a Datos -->
-    <script>
-        let imagenBase64 = "";
-
-        // Función para leer la imagen subida y mostrarla
-        function mostrarImagen(event) {
-            const archivo = event.target.files[0];
-            if (archivo) {
-                const lector = new FileReader();
-                lector.onload = function(e) {
-                    imagenBase64 = e.target.result;
-                    const img = document.getElementById('vistaPrevia');
-                    const texto = document.getElementById('textoImagen');
-                    img.src = imagenBase64;
-                    img.style.display = 'block';
-                    texto.style.display = 'none';
-                };
-                lector.readAsDataURL(archivo);
-            }
-        }
-
-        // Guardar datos en el LocalStorage
-        document.getElementById('miFormulario').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const nuevoRegistro = {
-                codigo: document.getElementById('codigo').value,
-                nombre: document.getElementById('nombre').value,
-                categoria: document.getElementById('categoria').value,
-                precio: document.getElementById('precio').value,
-                observaciones: document.getElementById('observaciones').value,
-                activo: document.getElementById('activo').checked,
-                imagen: imagenBase64
-            };
-
-            // Guardar lista en LocalStorage
-            let registros = JSON.parse(localStorage.getItem('registros_ad')) || [];
-            registros.push(nuevoRegistro);
-            localStorage.setItem('registros_ad', JSON.stringify(registros));
-
-            alert('¡Registro guardado en LocalStorage con éxito!');
-            
-            // Limpiar formulario
-            this.reset();
-            document.getElementById('vistaPrevia').style.display = 'none';
-            document.getElementById('textoImagen').style.display = 'inline';
-            imagenBase64 = "";
-        });
-
-        // Exportar datos guardados a un archivo JSON
-        function exportarJSON() {
-            let datos = localStorage.getItem('registros_ad') || "[]";
-            let blob = new Blob([datos], { type: "application/json" });
-            let enlace = document.createElement("a");
-            enlace.href = URL.createObjectURL(blob);
-            enlace.download = "datos_formulario.json";
-            enlace.click();
-        }
-    </script>
 </body>
 </html>
